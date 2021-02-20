@@ -79,3 +79,21 @@ span {
     border-bottom: 2px solid orange;
     background-color: inherit;
 }
+
+.result {
+    height: 500px;
+    display: flex;
+    align-items: center;
+
+}
+.resultText {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+.resultNum {
+    color: orange;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 10px 0 10px;
+}

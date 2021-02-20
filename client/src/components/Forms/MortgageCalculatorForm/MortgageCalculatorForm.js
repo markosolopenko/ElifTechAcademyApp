@@ -16,31 +16,23 @@ const MyTextInput = ({label, ...props}) => {
     </div>
   )
 }
-const MySelect = ({label, handleSelect, ...props}) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label htmlFor={props.id || props.name} className="label"></label>
-      <select {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="calcErrorMessage">{meta.error}</div>
-      ): null}
-    </div>
-  )
-}
 
 
-const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selectedBank}) => { 
+const MortgageCalculatorForm = (props) => { 
+    const {banksNames, handleSubmit, handleSelect, selectedBank, monthlyPayment}= props
     if(selectedBank) {
+      var bankName = selectedBank.bankName;
       var maxLoan = selectedBank.maximumLoan;
       var textLoan = "Max loan which bank can give " + maxLoan
       var minDownPay = selectedBank.minimumDownPayment.replace(' ', '');
       var textDownPay = "Min down payment in this bunk is " + minDownPay;
+    }else {
+      var bankName = '';
     }
     return (
         <Formik
             enableReinitialize
-            initialValues={{initialLoan: "", downPayment: "", bankName: ""}}
+            initialValues={{initialLoan: "", downPayment: ""}}
             validationSchema={Yup.object({
               initialLoan: Yup.number()
                 .typeError("Number Expected")
@@ -50,30 +42,32 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
                 .typeError("Number Expected")
                 .min(minDownPay ? minDownPay : null, textDownPay ? textDownPay: null)
                 .required("Required!!!"),
-              bankName: Yup.string()
-                .oneOf(banksNames, "Invalid Bank")
-                .required("Required")
+              
             })}
             onSubmit={(values, {setSubmitting}) => {
               setSubmitting(true)
               handleSubmit(values)
               setSubmitting(false)
-              setTimeout(() => {
-                window.location.reload();
-              }, 1000)
             }}
           >
           {({ resetForm, values }) => (
             <div className="black-bakcground">
-              <div className="plan">
-                <div className="payment-plan">
-                  Payment plan for your mortgage<span>:</span> 
+              { monthlyPayment === '' ? 
+                <div className="plan">
+                  <div className="payment-plan">
+                    Payment plan for your mortgage<span>:</span> 
+                  </div>
+                  <div className="payment-plan">
+                    Put all needed information and we will 
+                    calculate <span>monthly mortgage payment</span>
+                  </div>
+                </div> :
+                <div className="result">
+                  <div className="resultText">You have to pay:</div>
+                  <div className="resultNum">{monthlyPayment}$</div>
+                  <div className="resultText">every month.</div>
                 </div>
-                <div className="payment-plan">
-                  Put all needed information and we will 
-                  calculate <span>monthly mortgage payment</span>
-                </div>
-              </div>
+              }
               <Form className="calculatorForm">
                 <MyTextInput 
                   label="initialLoan"
@@ -106,7 +100,12 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
                     )
                   }
                 </select>
-                <button className="calculate">Calculate</button>
+                <button 
+                  type='submit'
+                  className="calculate"
+                >
+                  Calculate
+                </button>
               </Form>
             </div>
           )}

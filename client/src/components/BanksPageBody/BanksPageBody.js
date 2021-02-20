@@ -29,10 +29,14 @@ const BanksPageBody = ({banks, handleEditClick, handleDeleteClick}) => {
                             <div className="name">{bank.loanTerm} years</div>
                         </div>
                         <div className="buttons">
-                            <div className="editButton" onClick={() => handleEditClick(bank, bank._id)}> 
+                            <div className="editButton" 
+                                 onClick={() => handleEditClick(bank, bank._id)}
+                            > 
                                 <button className="edit">Edit</button>
                             </div>
-                            <div className="deleteButton" onClick={() => handleDeleteClick(bank._id)}> 
+                            <div className="deleteButton" 
+                                 onClick={() => handleDeleteClick(bank._id)}
+                            > 
                                 <button className="delete">Delete</button>
                             </div>
                         </div>

@@ -10,7 +10,8 @@ const initialState = {
     bankId: '',
     bankToEdit: {},
     banksNames: [],
-    selectedBank: {}
+    selectedBank: {},
+    monthlyPayment: ''
 };
 
 

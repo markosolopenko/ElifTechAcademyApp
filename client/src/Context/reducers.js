@@ -29,6 +29,11 @@ export const reducer = (state, action) => {
                     bank.bankName === action.payload.selected
                 )
             }
+        case "SET_MONTHLY_PAYMENT":
+            return {
+                ...state,
+                monthlyPayment: action.payload.result
+            }
         default: 
             return null
     }

@@ -21,6 +21,7 @@ export const EditBank = ({open, closeForm}) => {
         <Portal className="root-port" element="div">
             <Modal className="edttBankModal" open={open}>
                 <BankForm 
+                    banksNames={state.banksNames}
                     state={state.bankToEdit}
                     closeForm={closeForm}
                     handleSubmit={handleSubmit}

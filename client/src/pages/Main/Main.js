@@ -19,9 +19,8 @@ const Main = () => {
                     type: actions.FETCH_BANKS, 
                     payload: res.data
                 })
-            });
-        dispatch({type: actions.GET_ALL_BANKS_NAMES})
-    }, [state.banks])
+            }).catch(err => console.log(err))
+    }, [dispatch])
 
     const openForm = () => {
         setIsOpen(true)
@@ -29,9 +28,14 @@ const Main = () => {
     const closeForm = () => {
         setIsOpen(false)
     }
+    const handleClickCalculate = () => {
+        dispatch({type: actions.GET_ALL_BANKS_NAMES})
+    }
     return (
         <div className='mainPage'>
-            <Header />
+            <Header 
+                handleClickCalculate={handleClickCalculate}
+            />
             <MainPageBody 
                 isOpen={isOpen}
                 openForm={openForm}

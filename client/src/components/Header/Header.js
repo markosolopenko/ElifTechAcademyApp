@@ -2,8 +2,7 @@ import React from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
 
-
-const Header = () => {
+const Header = ({handleClickCalculate}) => {
     return (
         <div className="header">
             <div className="navbar">
@@ -18,7 +17,9 @@ const Header = () => {
                             Banks
                         </div>
                     </Link>
-                    <Link to="/morgageCalculator" className="link">
+                    <Link to="/morgageCalculator" className="link" 
+                        onClick={handleClickCalculate}
+                    >
                         <div className="morgageCalculatorRef">
                             Morgage Calculator
                         </div>
