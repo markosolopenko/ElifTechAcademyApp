@@ -7,9 +7,11 @@ const Header = () => {
     return (
         <div className="header">
             <div className="navbar">
-                <div className="brand">
-                    <div className="brandText">ElifTech</div>
-                </div>
+                <Link to="/main" className="link">
+                    <div className="brand">
+                        <div className="brandText">ElifTech</div>
+                    </div>
+                </Link>
                 <div className="refs">
                     <Link to="/banks" className="link">
                         <div className="banksRef">

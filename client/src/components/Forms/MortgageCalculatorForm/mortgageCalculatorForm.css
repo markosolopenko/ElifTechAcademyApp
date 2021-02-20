@@ -1,0 +1,81 @@
+.mortgageCalculator {
+    background-image: url(../../../assets/bank.jpg);
+    height: 949px
+}
+
+.black-bakcground {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 850px;
+}
+.plan {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    width: 800px;
+    margin-left: -200px;
+}
+.payment-plan {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+span {
+    color: orange;
+}
+.calculatorForm {
+    width: 300px;
+    background-color: white;
+    height: 300px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    box-shadow: 2px 2px 12px 2px orange;
+    margin-top: 150px;
+    margin-left: 120px;
+}
+.calcInputField{
+    width: 270px;
+    height: 40px;
+
+    padding: .4rem;
+    font-size: 20px;
+    color: black;
+    outline: unset;
+    border: none;
+    border-bottom: 2px solid orange;
+}
+.calcInputField::placeholder {
+    font-size: 17px;
+}
+.calcErrorMessage {
+    color: red;
+}
+.calculate {
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: unset;
+    background-color: orange;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+}
+.banksNamesSelect {
+    width: 270px;
+    height: 40px;
+    padding: .4rem;
+    font-size: 17px;
+    color: black;
+    outline: unset;
+    border: none;
+    border-bottom: 2px solid orange;
+    background-color: inherit;
+}

@@ -7,27 +7,22 @@ import "./index.css";
 // react router 
 import { BrowserRouter } from 'react-router-dom';
 
-// Redux
-import { rootReducer } from './core/rootReducer';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
+// Context
+import { BanksContext } from './Context/BanksContext';
 
 // Local Imports
 import App from './App';
 
 
-const store = configureStore({
-  reducer: rootReducer,
-});
 
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <BanksContext>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
+  </BanksContext>,
   document.getElementById('root')
 );
 

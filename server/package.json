@@ -6,6 +6,8 @@
   "scripts": {
     "start": "nodemon"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

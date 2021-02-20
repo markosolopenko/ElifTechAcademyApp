@@ -1,0 +1,62 @@
+.banksPageBody {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(243, 232, 232);
+    height: 850px;
+}
+
+
+.banksPageBodyElement {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: rgb(116, 108, 95);
+    border-radius: 10px;
+    height: 230px;
+    width: 400px;
+
+    box-shadow: 2px 2px 12px 1px rgb(116, 108, 95);
+}
+.bankName, .bankRate, .bankMaximumLoan, .bankMinimumDownPayment, .bankLoanTerm {
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+
+.text {
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+}
+.name {
+    color: orange;
+    font-weight: bold;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.editButton, .deleteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orange;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.deleteButton {
+    background-color: rgb(250, 199, 105);
+}
+.edit, .delete {
+    font-weight: bold;
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}

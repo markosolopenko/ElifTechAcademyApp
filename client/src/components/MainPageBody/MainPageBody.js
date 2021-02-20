@@ -1,8 +1,7 @@
 import React from 'react';
 import './mainPageBody.css'
-import { Link } from 'react-router-dom';
 
-const MainPageBody = () => {
+const MainPageBody = ({openForm}) => {
     return (
         <div className="mainPageBody">
             <div className="slogon">
@@ -24,11 +23,9 @@ const MainPageBody = () => {
                     </div>
                 </div>   
             </div>
-            <Link to="/banks" className="link">
-                <div className="buttonCreateBank">
-                    <button className="createBank">Create Bank</button>
-                </div>
-            </Link>
+            <div className="buttonCreateBank" onClick={openForm}>
+                <button className="createBank">Create Bank</button>
+            </div>
         </div>
     )
 }
