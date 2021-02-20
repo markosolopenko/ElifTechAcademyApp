@@ -6,7 +6,7 @@ import { Modal } from '../../../common/Modal/Modal';
 import { Portal } from '../../../common/Portal/Portal';
 
 
-export const CreateBank = ({open, closeForm}) => {
+export const CreateBank = ({open, closeForm, banksNames}) => {
     const handleSubmit = (values) => {
         const newBank = {
             bankName: values.bankName,  
@@ -32,6 +32,7 @@ export const CreateBank = ({open, closeForm}) => {
                     }
                     handleSubmit={handleSubmit}
                     closeForm={closeForm}
+                    banksNames={banksNames}
                 />
             </Modal>
         </Portal>

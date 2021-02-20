@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../../components/Header/Header';
 import BanksPageBody from '../../components/BanksPageBody/BanksPageBody';
 import { DispatchContext, StateContext } from '../../Context/BanksContext';
@@ -10,15 +10,7 @@ const Banks = () => {
     const [isOpen, setIsOpen] = useState(false);
     const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
-    useEffect(() => {
-        axios.get('http://localhost:3002/main/createdBanks')
-            .then(res => {
-                dispatch({
-                    type: actions.FETCH_BANKS, 
-                    payload: res.data
-                })
-            });
-    }, [dispatch])
+
     const handleEditClick = (bank, id) => {
         setIsOpen(true)
         dispatch({

@@ -17,7 +17,7 @@ const MyTextInput = ({label, ...props}) => {
   )
 }
 
-const BankForm = ({handleSubmit, state, closeForm}) => {
+const BankForm = ({handleSubmit, state, closeForm, banksNames}) => {
     return (
         <Formik 
           enableReinitialize
@@ -26,6 +26,7 @@ const BankForm = ({handleSubmit, state, closeForm}) => {
             bankName: Yup.string()
             .min(3, 'Required Min 3 symbols!!!')
             .max(20, 'Max available 20 symbols!!!')
+            .notOneOf(banksNames, "This bank is already exist!!!")
             .required('Required!!!'),
             interestRate: Yup.number()
               .typeError('Must be a number')

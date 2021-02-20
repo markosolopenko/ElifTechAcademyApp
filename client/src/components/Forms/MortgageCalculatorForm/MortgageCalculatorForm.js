@@ -33,9 +33,9 @@ const MySelect = ({label, handleSelect, ...props}) => {
 const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selectedBank}) => { 
     if(selectedBank) {
       var maxLoan = selectedBank.maximumLoan;
-      var textLoan = "Max loan which bank can give" + maxLoan
-      var minDownPay = selectedBank.minimumDownPayment;
-      var textDownPay = "Min down payment in this bunk is" + minDownPay;
+      var textLoan = "Max loan which bank can give " + maxLoan
+      var minDownPay = selectedBank.minimumDownPayment.replace(' ', '');
+      var textDownPay = "Min down payment in this bunk is " + minDownPay;
     }
     return (
         <Formik
@@ -48,7 +48,7 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
                 .required('Required!!!'),
               downPayment: Yup.number()
                 .typeError("Number Expected")
-                .max(minDownPay ? minDownPay : null, textDownPay ? textDownPay: null)
+                .min(minDownPay ? minDownPay : null, textDownPay ? textDownPay: null)
                 .required("Required!!!"),
               bankName: Yup.string()
                 .oneOf(banksNames, "Invalid Bank")
@@ -58,6 +58,9 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
               setSubmitting(true)
               handleSubmit(values)
               setSubmitting(false)
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000)
             }}
           >
           {({ resetForm, values }) => (
@@ -86,7 +89,10 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
                   autoComplete="off"
                   placeholder="Down Payment" 
                 />
-                <MySelect label="bankName" name="bankName" className="banksNamesSelect">
+                <label className="bankName"></label>
+                <select name="bankName" className="banksNamesSelect"
+                  onChange={(e) => handleSelect(e.target.value)}
+                >
                   <option value="" className="optionBank">Select bank</option>
                   {
                     banksNames.map((name, id) => 
@@ -99,7 +105,7 @@ const MortgageCalculatorForm = ({banksNames, handleSubmit, handleSelect, selecte
                       </option>
                     )
                   }
-                </MySelect>
+                </select>
                 <button className="calculate">Calculate</button>
               </Form>
             </div>
