@@ -35,7 +35,6 @@ const MortgageCalculator = () => {
             payload: {result: monthlyPayment}
         });
     }
-    console.log(state);
     return (
         <div className="mortgageCalculator">
             <Header />
