@@ -8,7 +8,7 @@ require("dotenv/config");
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://marko:WtYz6JxWWC50Ds2w@clusterproducts.eapir.mongodb.net/ElifTecAcademy", 
+mongoose.connect(process.env.DB_CONNECTION, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -20,7 +20,7 @@ mongoose.connect("mongodb+srv://marko:WtYz6JxWWC50Ds2w@clusterproducts.eapir.mon
 
 app.use('/main', require('./routes/createBank'));
 
-app.listen(3002, () => {
+app.listen(process.env.PORT || 3002, () => {
     console.log("Server has been runed");
 });
 
