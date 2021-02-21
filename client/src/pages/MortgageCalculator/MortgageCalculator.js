@@ -26,13 +26,13 @@ const MortgageCalculator = () => {
     }
 
     const handleSubmit = (values) => {
-        const borrowed = Number(values.initialLoan) - values.downPayment;
-        const annualRate = Number(state.selectedBank[0].interestRate) * borrowed / 100;
-        const numOfMonthlyPayments = Number(state.selectedBank[0].loanTerm);
-        const monthlyPayment = borrowed / annualRate * borrowed / 100 / numOfMonthlyPayments;
+        const borrowed = Number(values.initialLoan) - Number(values.downPayment);
+        const addEveryYear = state.selectedBank[0].interestRate * values.initialLoan / 100 * state.selectedBank[0].loanTerm;
+        const period = state.selectedBank[0].loanTerm * 12;
+        const monthlyPayment = (borrowed + addEveryYear) / period;
         dispatch({
             type: actions.SET_MONTHLY_PAYMENT,
-            payload: {result: monthlyPayment}
+            payload: {result: Math.round(monthlyPayment)}
         });
     }
     return (
