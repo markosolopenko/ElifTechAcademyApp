@@ -11,7 +11,7 @@ const Banks = () => {
     const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
     useEffect(() => {
-        axios.get('http://localhost:3002/main/createdBanks')
+        axios.get('https://elif-tech-academy-project.herokuapp.com/main/createdBanks')
             .then(res => {
                 dispatch({
                     type: actions.FETCH_BANKS, 
