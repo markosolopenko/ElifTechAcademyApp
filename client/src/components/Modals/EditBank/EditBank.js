@@ -10,7 +10,7 @@ export const EditBank = ({open, closeForm}) => {
     const state = useContext(StateContext)
     const dispatch = useContext(DispatchContext)
     const handleSubmit = (values) => {
-        axios.patch(`http://localhost:3002/main/${state.bankId}`, values)
+        axios.patch(`https://elif-tech-academy-project.herokuapp.com/main/${state.bankId}`, values)
             .then(res => {
                 if (res.ok) {
                     return res.json()

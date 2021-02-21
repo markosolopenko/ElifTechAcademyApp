@@ -15,7 +15,7 @@ export const CreateBank = ({open, closeForm, banksNames}) => {
             minimumDownPayment: values.minimumDownPayment.toString(),
             loanTerm: values.loanTerm
         }
-        axios.post('http://localhost:3002/main/postBank', newBank);
+        axios.post('https://elif-tech-academy-project.herokuapp.com/main/postBank', newBank);
     }
     return (
         <Portal className="modal-create" element="div">

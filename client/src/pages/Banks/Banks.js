@@ -32,7 +32,7 @@ const Banks = () => {
         })
     }
     const handleDeleteClick = (id) => {
-        axios.delete(`http://localhost:3002/main/${id}`);
+        axios.delete(`https://elif-tech-academy-project.herokuapp.com/main/${id}`);
         setTimeout(() => {
             window.location.reload();
         }, 500)
