@@ -24,13 +24,13 @@ app.listen(process.env.PORT || 3002, () => {
     console.log("Server has been runed");
 });
 
-if(process.env.NODE_ENV === 'production') {
+
     app.use(express.static('client/build'));
 
     const path = require('path');
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
     })
-}
+
 
 
