@@ -1,8 +1,7 @@
 .banksPageBody {
     display: flex;
     justify-content: space-around;
-    background-color: rgb(243, 232, 232);
-    height: 850px;
+    flex-wrap: wrap;
 }
 
 
