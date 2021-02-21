@@ -9,9 +9,9 @@ import MortgageCalculator from './pages/MortgageCalculator/MortgageCalculator';
 const App = () => {
   return (
       <Switch>
-        <Route exact path="/main" component={Main} />
-        <Route exact path="/banks" component={Banks} />
-        <Route exact path="/morgageCalculator" component={MortgageCalculator} />
+        <Route exact path="https://elif-tech-academy-project.herokuapp.com/main" component={Main} />
+        <Route exact path="https://elif-tech-academy-project.herokuapp.com/banks" component={Banks} />
+        <Route exact path="https://elif-tech-academy-project.herokuapp.com/morgageCalculator" component={MortgageCalculator} />
         <Route>
           <Redirect to="/main" />
         </Route>
