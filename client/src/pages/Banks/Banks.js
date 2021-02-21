@@ -5,21 +5,17 @@ import { DispatchContext, StateContext } from '../../Context/BanksContext';
 import { actions } from '../../Context/actions';
 import axios from 'axios';
 import {EditBank} from '../../components/Modals/EditBank/EditBank';
+import { getBanks } from '../../api/getBanks';
 
 const Banks = () => {
     const [isOpen, setIsOpen] = useState(false);
     const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
     useEffect(() => {
-        axios.get('https://elif-tech-academy-project.herokuapp.com/main/createdBanks')
-            .then(res => {
-                dispatch({
-                    type: actions.FETCH_BANKS, 
-                    payload: res.data
-                })
-            });
+        getBanks().then(res => {
+           dispatch({type: actions.FETCH_BANKS, payload: res})
+        })
     }, [])
-
     const handleEditClick = (bank, id) => {
         setIsOpen(true)
         dispatch({
@@ -34,10 +30,9 @@ const Banks = () => {
     const handleDeleteClick = (id) => {
         axios.delete(`https://elif-tech-academy-project.herokuapp.com/main/${id}`);
         setTimeout(() => {
-            window.location.reload();
+            window.location.reload()
         }, 500)
     } 
-
     const closeForm = () => {
         setIsOpen(false)
     }
