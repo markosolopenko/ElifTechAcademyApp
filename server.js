@@ -25,5 +25,5 @@ app.listen(process.env.PORT, () => {
 });
 
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('../client/build'));
+    app.use(express.static('client/build'));
 }
