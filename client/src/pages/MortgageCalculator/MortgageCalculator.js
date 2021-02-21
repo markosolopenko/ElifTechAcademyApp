@@ -3,11 +3,21 @@ import Header from '../../components/Header/Header';
 import { DispatchContext, StateContext } from '../../Context/BanksContext';
 import { actions } from '../../Context/actions';
 import MortgageCalculatorForm from '../../components/Forms/MortgageCalculatorForm/MortgageCalculatorForm';
-
+import axios from 'axios';
 
 const MortgageCalculator = () => {
     const dispatch = useContext(DispatchContext);
     const state = useContext(StateContext); 
+    useEffect(() => {
+        axios.get('http://localhost:3002/main/createdBanks')
+            .then(res => {
+                dispatch({
+                    type: actions.FETCH_BANKS, 
+                    payload: res.data
+                })
+                dispatch({type: actions.GET_ALL_BANKS_NAMES})
+            }).catch(err => console.log(err))
+    }, [dispatch])
     const handleSelect = (selected) => {  
         dispatch({
             type: actions.SET_SELECTED_BANK,
