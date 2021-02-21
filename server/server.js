@@ -20,6 +20,10 @@ mongoose.connect(process.env.DB_CONNECTION,
 
 app.use('/main', require('./routes/createBank'));
 
-app.listen(3002, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server has been runed");
 });
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('../client/build'));
+}
